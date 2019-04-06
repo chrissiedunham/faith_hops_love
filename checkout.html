@@ -24,7 +24,7 @@
         }
 
         $( "#beer_select" ).change(function( event ) {
-          var numBeersSelected = $("#beer_select option:selected" ).text();
+          var numBeersSelected = $("#beer_select option:selected" ).text().match(/\d+/g)[0];
           var baseUrl = "http://www.srdiocese.org/Youth_Ministry/Faith_Hops_Love" ;
           var redirectUrl = baseUrl + "?beers=" + numBeersSelected;
           $( "#redirect_url" ).val(redirectUrl)
@@ -59,7 +59,7 @@
           <INPUT TYPE="hidden" NAME="return" id="redirect_url" value="">
           <input type="hidden" name="cmd" value="_cart">
           <input type="hidden" name="upload" value="1">
-          <input type="hidden" name="business" value="dunham.chrissie@gmail.com">
+          <input type="hidden" name="business" value="dsryouth@srdiocese.org">
           <input type="hidden" name="currency_code" value="USD">
 
           <input type="hidden" name="item_name_1" value="fhl_ticket">
@@ -83,15 +83,14 @@
             <option value="400.00">20 ($400.00)</option>
           </select>
           <br>
-          <label>Buy-a-Beer for a friend ($6.50 each)</label>
+          <label>Buy-a-Beer for a friend</label>
           <input type="hidden" name="item_name_3" value="fhl_beer">
           <select id="beer_select" name="amount_3">
             <option value="0">Select Quantity</option>
-            <option value="6.50">1</option>
-            <option value="13.00">2</option>
-            <option value="19.50">3</option>
-            <option value="32.50">5</option>
-            <option value="65.00">10</option>
+            <option value="6.50">1 Beer ($6.50)</option>
+            <option value="13.00">2 Beers ($13.00)</option>
+            <option value="19.50">3 Beers ($19.50)</option>
+            <option value="32.50">5 Beers ($32.50)</option>
           </select>
           <br>
 
