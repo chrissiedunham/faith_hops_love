@@ -20,15 +20,12 @@
 
           $( "#thank_you" ).html(thank_you_text);
           $( "#thank_you" ).dialog();
-        } else {
-          alert("welcome!")
         }
 
         $( "#beer_select" ).change(function( event ) {
           var numBeersSelected = $("#beer_select option:selected" ).text();
           var baseUrl = "http://www.srdiocese.org/Youth_Ministry/Faith_Hops_Love" ;
           var redirectUrl = baseUrl + "?beers=" + numBeersSelected;
-          alert("redirect url is" + redirectUrl);
           $( "#redirect_url" ).val(redirectUrl)
         });
       } );
