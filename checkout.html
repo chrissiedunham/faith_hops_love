@@ -58,8 +58,7 @@
         </form>
       </div>
     </div>
-    <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
       function friendInfo(event) {
         var numBeersSelected = $("#beer-select option:selected" ).text().match(/\d+/g);
@@ -80,12 +79,12 @@
       function gatherInfo() {
         var names = new Array;
         $('.friend_name').each(function() {
-          names.push(this.name + ":" + this.value);
+          names.push(this.name + ": " + this.value);
               });
 
         var emails = new Array;
         $('.email').each(function() {
-          emails.push(this.name + ":" + this.value);
+          emails.push(this.name + ": " + this.value);
               });
 
         $("#names_and_emails").val("names: " + names + ", " + "emails: " + emails);
@@ -99,4 +98,3 @@
     </script>
   </body>
 </html>
-
