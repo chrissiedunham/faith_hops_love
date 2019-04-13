@@ -65,10 +65,14 @@
         if (numBeersSelected !== null) {
           numBeersSelected = numBeersSelected[0];
 
-          var new_input = "<label>Friend's name: </label><input type='text'></input> <label>Friend's email: </label><input type='text'></input><br>";
           var all_inputs = ""
-          for (var i = 0; i < numBeersSelected; i++)
-            all_inputs += new_input;
+          for (var i = 0; i < numBeersSelected; i++) {
+            var item_number = 4 + i;
+            var item_number_display = i + 1;
+            all_inputs += "<input type='hidden' name='item_name_${item_number}' value='name'>"
+            all_inputs += "Friend " + item_number_display + "'s name: <input type='text' name='item_number_${item_number}'></input>"
+            all_inputs += "Friend " + item_number_display + "'s email (optional): <input type='text' name='item_description_${item_number}'></input></br>"
+          }
 
           $( "#friend-info" ).html(all_inputs);
         }
