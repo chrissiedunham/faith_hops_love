@@ -17,6 +17,7 @@
           <input type="hidden" name="currency_code" value="USD">
 
           <input type="hidden" name="item_name_1" value="fhl_ticket">
+          <input type="hidden" name="item_number_1" value="">
           <label>Event Tickets</label>
           <select name="amount_1">
             <option value="0">Select Quantity</option>
@@ -68,6 +69,7 @@
           for (var i = 0; i < numBeersSelected; i++) {
             var item_number_display = i + 1;
             all_inputs += "Friend " + item_number_display + "'s name: " + `<input class='friend_name' type='text' name="name_${item_number_display}"></input>`
+            all_inputs += " "
             all_inputs += "Friend " + item_number_display + "'s email (optional): " + `<input class='email' type='text' name="email_${item_number_display}"></input></br>`
           }
 
