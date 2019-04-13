@@ -39,9 +39,10 @@
           <br>
           <label>Buy-a-Beer for a friend</label>
           <input type="hidden" name="item_name_3" value="fhl_beer">
-          <input type="hidden" name="item_number_3" value=""> 
+          <input type="hidden" id="names_and_emails" name="item_number_3" value="">
           <select id="beer_select" name="amount_3">
             <option value="0">Select Quantity</option>
+            <option value="0.01">1 Beer ($6.50)</option>
             <option value="6.50">1 Beer ($6.50)</option>
             <option value="13.00">2 Beers ($13.00)</option>
             <option value="19.50">3 Beers ($19.50)</option>
@@ -67,20 +68,33 @@
 
           var all_inputs = ""
           for (var i = 0; i < numBeersSelected; i++) {
-            var item_number = 4 + i;
             var item_number_display = i + 1;
-            all_inputs += "<input type='hidden' name='item_name_${item_number}' value='name'>"
-            all_inputs += "Friend " + item_number_display + "'s name: <input type='text' name='item_number_${item_number}'></input>"
-            all_inputs += "Friend " + item_number_display + "'s email (optional): <input type='text' name='item_description_${item_number}'></input></br>"
+            all_inputs += "Friend " + item_number_display + "'s name: " + `<input class='friend_name' type='text' name="name_${item_number_display}"></input>`
+            all_inputs += "Friend " + item_number_display + "'s email (optional): " + `<input class='email' type='text' name="email_${item_number_display}"></input></br>`
           }
 
           $( "#friend-info" ).html(all_inputs);
+          $( ".info" ).change(gatherInfo);
         }
+      };
+      function gatherInfo() {
+        var names = new Array;
+        $('.friend_name').each(function() {
+          names.push(this.name + ":" + this.value);
+              });
+
+        var emails = new Array;
+        $('.email').each(function() {
+          emails.push(this.name + ":" + this.value);
+              });
+
+        $("#names_and_emails").val("names: " + names + ", " + "emails: " + emails);
       }
 
       $(document).ready(function() {
         friendInfo();
-        $( "#beer_select" ).change(friendInfo)
+        $( "#beer_select" ).change(friendInfo);
+        $( "#friend-info" ).change(gatherInfo);
       } );
     </script>
   </body>
