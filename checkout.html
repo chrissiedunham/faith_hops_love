@@ -40,7 +40,7 @@
           <label>Buy-a-Beer for a friend</label>
           <input type="hidden" name="item_name_3" value="fhl_beer">
           <input type="hidden" id="names_and_emails" name="item_number_3" value="">
-          <select id="beer_select" name="amount_3">
+          <select id="beer-select" name="amount_3">
             <option value="0">Select Quantity</option>
             <option value="0.01">1 Beer ($6.50)</option>
             <option value="6.50">1 Beer ($6.50)</option>
@@ -62,7 +62,7 @@
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
       function friendInfo(event) {
-        var numBeersSelected = $("#beer_select option:selected" ).text().match(/\d+/g);
+        var numBeersSelected = $("#beer-select option:selected" ).text().match(/\d+/g);
         if (numBeersSelected !== null) {
           numBeersSelected = numBeersSelected[0];
 
@@ -93,7 +93,7 @@
 
       $(document).ready(function() {
         friendInfo();
-        $( "#beer_select" ).change(friendInfo);
+        $( "#beer-select" ).change(friendInfo);
         $( "#friend-info" ).change(gatherInfo);
       } );
     </script>
