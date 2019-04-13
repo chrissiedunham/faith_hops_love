@@ -2,6 +2,8 @@
 <html lang=en>
 
   <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>jQuery UI Dialog - Default functionality</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -10,25 +12,20 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
+      function friendInfo(event) {
+        var numBeersSelected = $("#beer_select option:selected" ).text().match(/\d+/g)[0];
+
+        var new_input = "<label>Friend's name: </label><input type='text'></input> <label>Friend's email: </label><input type='text'></input><br>";
+        var all_inputs = ""
+        for (var i = 0; i < numBeersSelected; i++)
+          all_inputs += new_input;
+
+        $( "#friend-info" ).html(all_inputs);
+      }
+
       $(document).ready(function() {
-        var urlParams = new URLSearchParams(location.search);
-        var numBeers = urlParams.get('beers');
-        if (numBeers > 0) {
-          var instagram = "<a href=''>Instagram</a>"
-          var thank_you_2 = "Share with your friends on " + instagram + "!"
-          var ticket = (numBeers == 1) ? "ticket" : "tickets";
-          var thank_you_text = "<p>Thanks for your purchase of " + numBeers + " " + ticket + thank_you_2 + "</p>"
-
-          $( "#thank_you" ).html(thank_you_text);
-          $( "#thank_you" ).dialog();
-        }
-
-        $( "#beer_select" ).change(function( event ) {
-          var numBeersSelected = $("#beer_select option:selected" ).text().match(/\d+/g)[0];
-          var baseUrl = "http://www.srdiocese.org/Youth_Ministry/Faith_Hops_Love" ;
-          var redirectUrl = baseUrl + "?beers=" + numBeersSelected;
-          $( "#redirect_url" ).val(redirectUrl)
-        });
+        friendInfo()
+        $( "#beer_select" ).change(friendInfo)
       } );
     </script>
   </head>
@@ -56,7 +53,7 @@
         &nbsp;</div>
       <div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-          <INPUT TYPE="hidden" NAME="return" id="redirect_url" value="">
+          <INPUT TYPE="hidden" NAME="return" id="redirect_url" value="http://www.srdiocese.org/Youth_Ministry/Faith_Hops_Love">
           <input type="hidden" name="cmd" value="_cart">
           <input type="hidden" name="upload" value="1">
           <input type="hidden" name="business" value="dsryouth@srdiocese.org">
@@ -92,6 +89,7 @@
             <option value="19.50">3 Beers ($19.50)</option>
             <option value="32.50">5 Beers ($32.50)</option>
           </select>
+          <div id="friend-info"></div>
           <br>
 
           <input type="image" id="pay_buttom"
