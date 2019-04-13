@@ -16,39 +16,53 @@
           <input type="hidden" name="business" value="dunham.chrissie@gmail.com">
           <input type="hidden" name="currency_code" value="USD">
 
-          <input type="hidden" name="item_name_1" value="fhl_ticket">
-          <input type="hidden" name="item_number_1" value="">
-          <label>Event Tickets</label>
-          <select name="amount_1">
-            <option value="0">Select Quantity</option>
-            <option value="25.01">Single Ticket $25.00 USD</option>
-            <option value="40.01">Two Tickets $40.00 USD</option>
-            <option value="60.01">Three Tickets $60.00 USD</option>
-            <option value="80.01">Four Tickets $80.00 USD</option>
-          </select>
-          <br>
-          <label>Raffle Tickets</label>
-          <input type="hidden" name="item_name_2" value="fhl_raffle_ticket">
-          <select name="amount_2">
-            <option value="0">Select Quantity</option>
-            <option value="20.01">1 ($20.00)</option>
-            <option value="40.01">2 ($40.00)</option>
-            <option value="100.01">5 ($100.00)</option>
-            <option value="200.01">10 ($200.00)</option>
-            <option value="400.01">20 ($400.00)</option>
-          </select>
-          <br>
-          <label>Buy-a-Beer for a friend</label>
-          <input type="hidden" name="item_name_3" value="fhl_beer">
-          <input type="hidden" id="names_and_emails" name="item_number_3" value="">
-          <select id="beer-select" name="amount_3">
-            <option value="0">Select Quantity</option>
-            <option value="6.51">1 Beer ($6.50)</option>
-            <option value="13.01">2 Beers ($13.00)</option>
-            <option value="19.51">3 Beers ($19.50)</option>
-            <option value="32.51">5 Beers ($32.50)</option>
-          </select>
-          <div id="friend-info"></div>
+          <table>
+            <tr>
+              <td>
+                <label>Event Tickets</label>
+                <input type="hidden" name="item_name_1" value="fhl_ticket">
+                <input type="hidden" name="item_number_1" value="">
+                <select name="amount_1">
+                  <option value="0">Select Quantity</option>
+                  <option value="25.01">Single Ticket $25.00 USD</option>
+                  <option value="40.01">Two Tickets $40.00 USD</option>
+                  <option value="60.01">Three Tickets $60.00 USD</option>
+                  <option value="80.01">Four Tickets $80.00 USD</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Raffle Tickets</label>
+                <input type="hidden" name="item_name_2" value="fhl_raffle_ticket">
+                <input type="hidden" name="item_number_2" value="">
+                <select name="amount_2">
+                  <option value="0">Select Quantity</option>
+                  <option value="20.01">1 ($20.00)</option>
+                  <option value="40.01">2 ($40.00)</option>
+                  <option value="100.01">5 ($100.00)</option>
+                  <option value="200.01">10 ($200.00)</option>
+                  <option value="400.01">20 ($400.00)</option>
+                </select>
+                <br>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Buy-a-Beer for a friend</label>
+                <input type="hidden" name="item_name_3" value="fhl_beer">
+                <input type="hidden" id="names_and_emails" name="item_number_3" value="">
+                <select id="beer-select" name="amount_3">
+                  <option value="0">Select Quantity</option>
+                  <option value="6.51">1 Beer ($6.50)</option>
+                  <option value="13.01">2 Beers ($13.00)</option>
+                  <option value="19.51">3 Beers ($19.50)</option>
+                  <option value="32.51">5 Beers ($32.50)</option>
+                </select>
+                <div id="friend-info"></div>
+              </td>
+            </tr>
+          </table>
           <br>
 
           <input type="image" id="pay_buttom"
@@ -68,10 +82,12 @@
           var all_inputs = ""
           for (var i = 0; i < numBeersSelected; i++) {
             var item_number_display = i + 1;
+            all_inputs += "<tr><td>"
             all_inputs += "Friend " + item_number_display + "'s name: " + `<input class='friend_name' type='text' name="name_${item_number_display}"></input>`
             all_inputs += " "
             all_inputs += "Friend " + item_number_display + "'s email (optional): " + `<input class='email' type='text' name="email_${item_number_display}"></input></br>`
           }
+            all_inputs += "</td></tr>"
 
           $( "#friend-info" ).html(all_inputs);
           $( ".info" ).change(gatherInfo);
