@@ -5,28 +5,6 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-      function friendInfo(event) {
-        var numBeersSelected = $("#beer_select option:selected" ).text().match(/\d+/g);
-        if (numBeersSelected !== null) {
-          numBeersSelected = numBeersSelected[0];
-
-          var new_input = "<label>Friend's name: </label><input type='text'></input> <label>Friend's email: </label><input type='text'></input><br>";
-          var all_inputs = ""
-          for (var i = 0; i < numBeersSelected; i++)
-            all_inputs += new_input;
-
-          $( "#friend-info" ).html(all_inputs);
-        }
-      }
-
-      $(document).ready(function() {
-        friendInfo();
-        $( "#beer_select" ).change(friendInfo)
-      } );
-    </script>
   </head>
   <body>
     <div class="container">
@@ -78,6 +56,28 @@
         </form>
       </div>
     </div>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      function friendInfo(event) {
+        var numBeersSelected = $("#beer_select option:selected" ).text().match(/\d+/g);
+        if (numBeersSelected !== null) {
+          numBeersSelected = numBeersSelected[0];
+
+          var new_input = "<label>Friend's name: </label><input type='text'></input> <label>Friend's email: </label><input type='text'></input><br>";
+          var all_inputs = ""
+          for (var i = 0; i < numBeersSelected; i++)
+            all_inputs += new_input;
+
+          $( "#friend-info" ).html(all_inputs);
+        }
+      }
+
+      $(document).ready(function() {
+        friendInfo();
+        $( "#beer_select" ).change(friendInfo)
+      } );
+    </script>
   </body>
 </html>
 
